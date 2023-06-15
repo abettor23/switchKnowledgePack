@@ -15,7 +15,7 @@ func main() {
 		var input string
 		fmt.Scan(&input)
 
-		value, err := strconv.Atoi(input)
+		value, err := strconv.Atoi(input) //проверка корректности введеного значения
 		if value <= 0 || err != nil {
 			fmt.Println("Введите корректное число клиентов:")
 			continue
@@ -29,10 +29,8 @@ func main() {
 
 	cash := make([]int, clients)
 	for i := 0; i < clients; i++ {
-		cash[i] = randomCash()
+		cash[i] = randomCash() //определение случайного номинала у каждого покупателя
 	}
-
-	//cash := []int{5, 5, 5, 10, 20}
 
 	fmt.Println("Количесвто клиентов:", clients)
 	fmt.Println("Купюры клиентов:", cash)
@@ -46,13 +44,13 @@ func main() {
 	}
 }
 
-func randomCash() int {
+func randomCash() int { //функция для определения случайного номинала
 	cashAmount := []int{5, 10, 20}
 	randomIndex := rand.Intn(len(cashAmount))
 	return cashAmount[randomIndex]
 }
 
-func changeCheck(cash []int, clients int) bool {
+func changeCheck(cash []int, clients int) bool { //функция для установки логики очередности сдачи для каждого
 	var cashbox []int
 	lemonadePrice := 5
 
